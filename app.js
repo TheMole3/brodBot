@@ -1,12 +1,12 @@
+const config = require("./config.json");
 const Discord = require("discord.js");
 const Enmap = require("enmap");
 const fs = require("fs");
 
 var mongojs = require("mongojs");
-db = mongojs('localhost:27017/brod', ['brod']);
+db = mongojs(config.dbConnect, ['brod']);
 
 client = new Discord.Client();
-const config = require("./config.json");
 // We also need to make sure we're attaching the config to the CLIENT so it's accessible everywhere!
 client.config = config;
 client.db = db;

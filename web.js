@@ -4,9 +4,6 @@ const express = require('express');
 const app = express();
 
 
-const port = 3004;
-
-
 app.get('/', (req, res) => {
   sendFile(__dirname + '/web/index/index.html', res, req);
 });
@@ -23,7 +20,7 @@ app.get('/:page', (req, res) => {
 app.get('/:folder/:page', (req, res) => {
   sendFile(__dirname + '/web/' + req.params.folder + '/' + req.params.page, res, req);
 });
-app.listen(port, () => console.log(`Web server listening on port ${port}!`));
+app.listen(config.port, () => console.log(`Web server listening on port ${config.port}!`));
 
 function sendFile(path, res, req) { // Send file function
   if (fs.existsSync(path)) { // If file exists send it
